@@ -36,7 +36,7 @@ class Bomb extends Creauture {
             if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
 
                 if (matrix[y][x] == 1) {
-                    console.log('aloooo');
+                    
 
                     matrix[y][x] = 0
                     for (var i in grassArr) {
@@ -49,7 +49,7 @@ class Bomb extends Creauture {
                 }
 
                 if (matrix[y][x] == 2) {
-                    console.log('aloooo');
+                   
 
                     matrix[y][x] = 0
                     for (var i in grassEaterArr) {
@@ -62,7 +62,7 @@ class Bomb extends Creauture {
                 }
 
                 if (matrix[y][x] == 3) {
-                    console.log('aloooo');
+                   
 
                     matrix[y][x] = 0
                     for (var i in predatorArr) {
