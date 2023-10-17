@@ -1,4 +1,4 @@
-class Creauture {
+module.exports = class Creauture {
     constructor(x, y) {
         this.x = x;
         this.y = y;
