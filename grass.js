@@ -4,8 +4,8 @@ module.exports = class Grass extends Creauture {
 
     mul() {
         this.multiply++;
-        var emptyCells = this.chooseCell(0);
-        var newCell = random(emptyCells);
+       
+        var newCell = this.selectRandomCell(0);
 
        
         if (newCell && this.multiply >= 8) {

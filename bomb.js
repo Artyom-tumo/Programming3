@@ -16,8 +16,8 @@ module.exports =  class Bomb extends Creauture {
     }
 
     mul() {
-        var emptyCells = this.chooseCell(0);
-        var newCell = random(emptyCells);
+        
+        var newCell = this.selectRandomCell(0);
 
         if (newCell) {
             var newX = newCell[0];

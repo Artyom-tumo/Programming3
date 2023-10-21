@@ -27,8 +27,8 @@ module.exports = class GrassEater extends Creauture {
     }
 
     mul() {
-        var emptyCells = this.chooseCell(0);
-        var newCell = random(emptyCells);
+       
+        var newCell = this.selectRandomCell(0);
 
         if (newCell) {
             var newX = newCell[0];
@@ -43,8 +43,8 @@ module.exports = class GrassEater extends Creauture {
 
     move() {
         this.energy--
-        var emptyCells = this.chooseCell(0);
-        var newCell = random(emptyCells);
+      
+        var newCell = this.selectRandomCell(0);
         if (newCell && this.energy >= 0) {
             var newX = newCell[0];
             var newY = newCell[1];
@@ -58,8 +58,8 @@ module.exports = class GrassEater extends Creauture {
     }
 
     eat() {
-        var emptyCells = this.chooseCell(1);
-        var newCell = random(emptyCells);
+
+        var newCell = this.selectRandomCell(1);
         if (newCell) {
             this.energy++
             var newX = newCell[0];

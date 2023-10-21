@@ -42,8 +42,8 @@ module.exports = class Lazer extends Creauture  {
     }
 
     mul() {
-        var emptyCells = this.chooseCell(0);
-        var newCell = random(emptyCells);
+        
+        var newCell = this.selectRandomCell(0);
 
         if (newCell) {
             var newX = newCell[0];
@@ -57,47 +57,36 @@ module.exports = class Lazer extends Creauture  {
     }
 
     eat() {
-       
-
         for (var i in this.directions) {
             var x = this.directions[i][0];
             var y = this.directions[i][1];
             if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
-            
+                
                 if (matrix[y][x] == 1) {
-                    
-                    
-                    matrix[y][x] = 0
-                    for (var i in grassArr) {
-                        if (x == grassArr[i].x && y == grassArr[i].y) {
-                            grassArr.splice(i, 1);
-                            this.die()
+                    matrix[y][x] = 0;
+                    for (var j in grassArr) {
+                        if (x == grassArr[j].x && y == grassArr[j].y) {
+                            grassArr.splice(j, 1);
                             break;
                         }
                     }
                 }
-
+    
                 if (matrix[y][x] == 2) {
-                  
-                    
-                    matrix[y][x] = 0
-                    for (var i in grassEaterArr) {
-                        if (x == grassEaterArr[i].x && y == grassEaterArr[i].y) {
-                            grassEaterArr.splice(i, 1);
-                           this.die()
+                    matrix[y][x] = 0;
+                    for (var j in grassEaterArr) {
+                        if (x == grassEaterArr[j].x && y == grassEaterArr[j].y) {
+                            grassEaterArr.splice(j, 1);
                             break;
                         }
                     }
                 }
-
+    
                 if (matrix[y][x] == 3) {
-                   
-                    
-                    matrix[y][x] = 0
-                    for (var i in predatorArr) {
-                        if (x == predatorArr[i].x && y == predatorArr[i].y) {
-                            predatorArr.splice(i, 1);
-                          this.die()
+                    matrix[y][x] = 0;
+                    for (var j in predatorArr) {
+                        if (x == predatorArr[j].x && y == predatorArr[j].y) {
+                            predatorArr.splice(j, 1);
                             break;
                         }
                     }
@@ -105,10 +94,10 @@ module.exports = class Lazer extends Creauture  {
             }
         }
     
-
-    
-
+        // После завершения цикла "Lazer" умирает
+        this.die();
     }
+    
     die() {
         matrix[this.y][this.x] = 0;
         for (var i in lazerArr) {

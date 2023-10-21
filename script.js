@@ -1,8 +1,8 @@
 
-const sideX = 30;
-const sideY = 30;
+const sideX = 15;
+const sideY = 20;
 const socket = io();
-var side = 50;
+var side = 25;
 
 function setup() {
     createCanvas(side * sideX, side * sideY);

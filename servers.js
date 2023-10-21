@@ -10,10 +10,10 @@ grassArr = [];
 grassEaterArr = [];
 bombArr = [];
 lazerArr = [];
-const sideX = 30;
-const sideY = 30;
+const sideX = 15;
+const sideY = 20;
 
-const speed = 300;
+const speed = 1200;
 
 let Grass = require("./grass")
 let Bomb = require("./bomb")

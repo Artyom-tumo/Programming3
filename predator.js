@@ -26,8 +26,8 @@ module.exports = class Predator extends Creauture {
         return super.chooseCell(character)
     }
     mul() {
-        var emptyCells = this.chooseCell(0);
-        var newCell = random(emptyCells);
+       
+        var newCell = this.selectRandomCell(0);
 
         if (newCell) {
             var newX = newCell[0];
@@ -42,8 +42,8 @@ module.exports = class Predator extends Creauture {
 
     move() {
         this.energy--
-        var emptyCells = this.chooseCell(0);
-        var newCell = random(emptyCells);
+     
+        var newCell = this.selectRandomCell(0);
         if (newCell && this.energy >= 0) {
             var newX = newCell[0];
             var newY = newCell[1];
@@ -56,8 +56,8 @@ module.exports = class Predator extends Creauture {
         }
     }
     eat() {
-        var emptyCells = this.chooseCell(2);
-        var newCell = random(emptyCells);
+       
+        var newCell = this.selectRandomCell(2);
         if (newCell) {
             this.energy++
             var newX = newCell[0];
