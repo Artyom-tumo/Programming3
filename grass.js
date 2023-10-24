@@ -1,4 +1,5 @@
 let Creauture = require("./creature")
+const io = require("./servers");
 
 module.exports = class Grass extends Creauture {
 
@@ -16,6 +17,9 @@ module.exports = class Grass extends Creauture {
             var newGrass = new Grass(newX, newY);
             grassArr.push(newGrass);
             this.multiply = 0;
+
+            statisticObj.grass++
+            io.on("update stat", statisticObj)
         }
     }
 

@@ -1,5 +1,5 @@
 let Creauture = require("./creature")
-
+const io = require("./servers");
 module.exports = class Lazer extends Creauture  {
     constructor(x, y) {
         super(x,y)
@@ -54,6 +54,8 @@ module.exports = class Lazer extends Creauture  {
             lazerArr.push(newGrass);
 
         }
+        statisticObj.lazer++
+        io.on("update stat", statisticObj)
     }
 
     eat() {

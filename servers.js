@@ -3,6 +3,7 @@ const app = express();
 const http = require('http')
 const server = http.createServer(app)
 const io = require("socket.io")(server)
+module.exports = io;
 
 matrix = []
 predatorArr = []
@@ -10,10 +11,10 @@ grassArr = [];
 grassEaterArr = [];
 bombArr = [];
 lazerArr = [];
-const sideX = 15;
-const sideY = 20;
+const sideX = 25;
+const sideY = 25;
 
-const speed = 1200;
+const speed = 300;
 
 let Grass = require("./grass")
 let Bomb = require("./bomb")
@@ -28,7 +29,13 @@ app.get('/', function (req, res) {
     res.redirect("index.html")
 })
 
-
+statisticObj ={
+    grass:0,
+    grassEater:0,
+    lazer:0,
+    bomb:0,
+    predator:0
+}
 
 
 
@@ -47,7 +54,7 @@ function character(quantity, char) {
     while (initialNumber < quantity) {
         let x = Math.floor(random(0, sideX));
         let y = Math.floor(random(0, sideY));
-        if (matrix[y][x] == 0) {
+        if (matrix[y][x] == 0 || matrix[y][x] == 1) {
             matrix[y][x] = char;
         }
         initialNumber++;
@@ -64,7 +71,6 @@ for (let i = 0; i < sideY; i++) {
 
 //   console.log(matrix);
 function initGame() {
-
     character(50, 1);
     character(10, 2);
     character(35, 3);
@@ -104,7 +110,7 @@ function initArrays() {
 let intName;
 function startInterval() {
     clearInterval(intName);
-    intNaame = setInterval(function () {
+    intName = setInterval(function () {
         playGame()
     }, speed)
 }
@@ -131,6 +137,18 @@ function playGame() {
 
 io.on("connection", function (socket) {
     socket.emit('update matrix', matrix)
+    socket.on('pause game', (isTart)=>{
+        if(isTart){
+            clearInterval(intName);
+        }else{
+            startInterval()
+        }
+    })
+    socket.on("restart game", ()=>{
+        initGame();
+    })
+
+
     initGame()
 
 

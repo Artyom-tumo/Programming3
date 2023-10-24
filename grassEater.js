@@ -1,5 +1,5 @@
 let Creauture = require("./creature")
-
+const io = require("./servers");
 module.exports = class GrassEater extends Creauture {
     constructor(x, y) {
         
@@ -39,6 +39,8 @@ module.exports = class GrassEater extends Creauture {
             grassEaterArr.push(newGrass);
             this.energy = 8;
         }
+        statisticObj.grassEater++
+        io.on("update stat", statisticObj)
     }
 
     move() {

@@ -1,6 +1,6 @@
 
 let Creauture = require("./creature")
-
+const io = require("./servers");
 module.exports =  class Bomb extends Creauture {
     constructor(x, y) {
         super(x, y)
@@ -28,6 +28,8 @@ module.exports =  class Bomb extends Creauture {
             bombArr.push(newGrass);
 
         }
+        statisticObj.bomb++
+        io.on("update stat", statisticObj)
     }
 
     eat() {
