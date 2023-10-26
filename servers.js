@@ -14,7 +14,7 @@ lazerArr = [];
 const sideX = 25;
 const sideY = 25;
 
-const speed = 300;
+let speed = 300;
 
 let Grass = require("./grass")
 let Bomb = require("./bomb")
@@ -147,7 +147,12 @@ io.on("connection", function (socket) {
     socket.on("restart game", ()=>{
         initGame();
     })
-
+    socket.on("winter", ()=>{
+        speed = 1200;
+    })
+    socket.on("summer", ()=>{
+        speed = 100;
+    })
 
     initGame()
 
