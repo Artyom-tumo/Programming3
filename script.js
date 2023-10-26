@@ -1,7 +1,8 @@
 const pause = document.getElementById("pause")
 const resume = document.getElementById("resume")
 const restart = document.getElementById("restart")
-
+const winter = document.getElementById("winter")
+const summer = document.getElementById("summer")
 
 const grass = document.getElementById("grass")
 const bomb = document.getElementById("bomb")
@@ -16,6 +17,13 @@ const sideX = 25;
 const sideY = 25;
 const socket = io();
 var side = 25;
+
+winter.addEventListener("click", ()=>{
+    socket.emit("winter")
+})
+summer.addEventListener("click", ()=>{
+    socket.emit("summer")
+})
 
 restart.addEventListener("click", ()=>{
     socket.emit("restart game")
